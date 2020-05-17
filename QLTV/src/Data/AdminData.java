@@ -7,7 +7,7 @@ package Data;
 
 import static Data.KhachHangData.ps;
 import Object.Admin;
-import Object.KhachHang;
+import Object.Member;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -22,7 +22,7 @@ public class AdminData {
     public Admin dangNhap(String taiKhoan, String pass) {
         Admin ad = null;
         try{
-            ps = Connect.getConnect().prepareStatement("SELECT * FROM QUAN_TRI where Ma_Admin = ? and Password=?");
+            ps = Connect.getConnect().prepareStatement("SELECT * FROM admin where account = ? and password=?");
             ps.setString(1, taiKhoan);
             ps.setString(2, pass);
             rs = ps.executeQuery();

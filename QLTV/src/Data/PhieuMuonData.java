@@ -5,8 +5,8 @@
  */
 package Data;
 
-import Object.PhieuMuon;
-import Object.Sach;
+import Object.BookLending;
+import Object.Book;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -27,7 +27,7 @@ public class PhieuMuonData {
             return null;
         }
     }
-     public static void InsertPhieu(PhieuMuon p) {
+     public static void InsertPhieu(BookLending p) {
         String sql = "insert into PHIEU_MUON values(?,?,?,?,?,?,?,?)";
         try {
             ps = Connect.getConnect().prepareStatement(sql);
@@ -44,7 +44,7 @@ public class PhieuMuonData {
         }
     }
     
-    public boolean UpdatePhieu(PhieuMuon p) {
+    public boolean UpdatePhieu(BookLending p) {
         try {
             ps = Connect.getConnect().prepareStatement("UPDATE PHIEU_MUON SET  Ma_Khach_hang = ?, Ma_Sach = ?,"
                     + "Ngay_muon = ?, Han_tra = ? where Ma_Phieu_muon = ?");

@@ -5,7 +5,7 @@
  */
 package Data;
 
-import Object.KhachHang;
+import Object.Member;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -18,15 +18,15 @@ public class KhachHangData {
     public static PreparedStatement ps;
     public static ResultSet rs;
     
-    public KhachHang dangNhap(String taiKhoan, String pass) {
-        KhachHang kh = null;
+    public Member dangNhap(String taiKhoan, String pass) {
+        Member kh = null;
         try{
-            ps = Connect.getConnect().prepareStatement("SELECT * FROM KHACH_HANG where Ma_Khach_hang = ? and Password=?");
+            ps = Connect.getConnect().prepareStatement("SELECT * FROM member where id = ? and password=?");
             ps.setString(1, taiKhoan);
             ps.setString(2, pass);
             rs = ps.executeQuery();
             while(rs.next()) {
-                kh = new KhachHang();
+                kh = new Member();
                // kh.setMaKH(rs.getString("Ma_Khach_hang"));
                // kh.setPass(rs.getString("Password"));
                 kh.setBirth(rs.getDate("Ngay_sinh"));
@@ -51,7 +51,7 @@ public class KhachHangData {
         }
     }
     
-     public static void InsertKhachHang(KhachHang kh) {
+     public static void InsertKhachHang(Member kh) {
         String sql = "insert into KHACH_HANG values(?,?,?,?,?,?,?)";
         try {
             ps = Connect.getConnect().prepareStatement(sql);
@@ -69,7 +69,7 @@ public class KhachHangData {
         }
     }
     
-    public boolean UpdateKhachHang(KhachHang kh) {
+    public boolean UpdateKhachHang(Member kh) {
         try {
             ps = Connect.getConnect().prepareStatement("UPDATE KHACH_HANG SET Password = ?, Ten_Khach_hang = ?,"
                     + "Ngay_sinh = ?, Dia_chi = ?, Phone = ? where Ma_Khach_hang = ?");

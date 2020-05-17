@@ -12,11 +12,12 @@ package Object;
 public class Admin {
     private String account;
     private String password;
+    private String name;
     
     public Admin() {
         
     }
-    public Admin(String maAdmin, String password) {
+    public Admin(String maAdmin, String password, String name) {
         this.account = maAdmin;
         this.password = password;
     }

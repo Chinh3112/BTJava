@@ -19,7 +19,7 @@ public class Connect {
     public static Connection getConnect(){
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:3306;databaseName=quanlythuvien;Username=root;Password = 123456abcA");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:3306;databaseName=mydb;Username=root;Password = 123456");
             System.out.println("Kết nối thành công");
         } catch (Exception e) {
             System.out.println("Kết nối không thành công");

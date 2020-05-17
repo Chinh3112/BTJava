@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author Gaara
  */
-public class KhachHang {
+public class Member {
     
     private String id;
     private String password;
@@ -20,11 +20,11 @@ public class KhachHang {
     private String address;
     private String phoneNumber;
     
-    public KhachHang() {
+    public Member() {
         
     }
     
-    public KhachHang(String id, String password, String name, Date birth, String address, String phone) {
+    public Member(String id, String password, String name, Date birth, String address, String phone) {
         this.id = id;
         this.password = password;
         this.name = name;

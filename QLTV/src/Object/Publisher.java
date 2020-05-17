@@ -11,16 +11,16 @@ import java.sql.Date;
  *
  * @author Gaara
  */
-public class NhaXb {
+public class Publisher {
     
     private String maNXB;
     private String tenNXB;
     
-    public NhaXb() {
+    public Publisher() {
         
     }
     
-    public NhaXb(String maNXB, String tenNXB) {
+    public Publisher(String maNXB, String tenNXB) {
         this.maNXB = maNXB;
         this.tenNXB = tenNXB;
     }

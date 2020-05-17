@@ -9,7 +9,7 @@ import Data.AdminData;
 import Data.Connect;
 import Data.KhachHangData;
 import Object.Admin;
-import Object.KhachHang;
+import Object.Member;
 import javax.swing.JOptionPane;
 
 /**
@@ -194,7 +194,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ban chua nhap day du thong tin", "thong bao", 1);
         }
         else {
-            KhachHang kh = khachhangdata.dangNhap(taiKhoan, matKhau);
+            Member kh = khachhangdata.dangNhap(taiKhoan, matKhau);
             Admin ad = admindata.dangNhap(taiKhoan, matKhau);
             try{
                 if(kh!=null) {

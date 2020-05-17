@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author Gaara
  */
-public class PhieuMuon {
+public class BookLending {
     private String id;
     private String id_khachhang;
     private String id_sach;
@@ -19,11 +19,11 @@ public class PhieuMuon {
     private Date hanTra;
     private int status;
     
-    public PhieuMuon() {
+    public BookLending() {
         
     }
     
-    public PhieuMuon(String id, String id_khachhang, String id_sach, Date ngayMuon, Date hanTra, int status) {
+    public BookLending(String id, String id_khachhang, String id_sach, Date ngayMuon, Date hanTra, int status) {
         this.id = id;
         this.id_khachhang = id_khachhang;
         this.id_sach = id_sach;

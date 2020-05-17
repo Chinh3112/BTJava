@@ -5,7 +5,7 @@
  */
 package Data;
 
-import Object.Sach;
+import Object.Book;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -28,7 +28,7 @@ public class SachData {
         }
     }
     
-     public static void InsertSach(Sach s) {
+     public static void InsertSach(Book s) {
         String sql = "insert into SACH values(?,?,?,?,?,?,?)";
         try {
             ps = Connect.getConnect().prepareStatement(sql);
@@ -37,7 +37,7 @@ public class SachData {
             ps.setString(3, s.getTenTacGia());
             ps.setString(4, s.getNhaXB());
             ps.setInt(5, s.getGiaTien());
-            ps.setInt(6, s.getSoLuong());
+            ps.setInt(6, s.getStatus());
             ps.setString(7, "Nguyễn Hoàng Hải");
             ps.execute();
             JOptionPane.showMessageDialog(null, "Đã thêm sách thành công!" , "Thông báo", 1);
@@ -46,7 +46,7 @@ public class SachData {
         }
     }
     
-    public boolean UpdateSach(Sach s) {
+    public boolean UpdateSach(Book s) {
         try {
             ps = Connect.getConnect().prepareStatement("UPDATE SACH SET  Ten_Sach = ?, Ten_Tac_gia = ?,"
                     + "Nha_xb = ?, Gia_tien = ?, So_luong = ? where Ma_Sach = ?");
@@ -55,7 +55,7 @@ public class SachData {
             ps.setString(2, s.getTenTacGia());
             ps.setString(3, s.getNhaXB());
             ps.setInt(4, s.getGiaTien());
-            ps.setInt(5, s.getSoLuong());
+            ps.setInt(5, s.getStatus());
             return ps.executeUpdate() >0;
         } catch (Exception e) {
             return false;

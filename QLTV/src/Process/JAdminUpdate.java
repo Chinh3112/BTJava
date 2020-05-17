@@ -9,10 +9,10 @@ import Data.Connect;
 import Data.KhachHangData;
 import Data.PhieuMuonData;
 import Data.SachData;
-import Object.KhachHang;
-import Object.NhaXb;
-import Object.PhieuMuon;
-import Object.Sach;
+import Object.Member;
+import Object.Publisher;
+import Object.BookLending;
+import Object.Book;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -149,6 +149,12 @@ public class JAdminUpdate extends javax.swing.JFrame {
 
         jLabel2.setText("Mã sách");
 
+        txtSoLuong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSoLuongActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Tên sách");
 
         tbSach.setModel(new javax.swing.table.DefaultTableModel(
@@ -236,7 +242,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtMaSach, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
@@ -244,7 +250,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
                                     .addComponent(txtTenTacGia))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, Short.MAX_VALUE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -380,7 +386,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                                     .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -389,7 +395,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
                                     .addComponent(txtSachMuon))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 74, Short.MAX_VALUE)
                                     .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(182, 182, 182)
@@ -401,7 +407,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
                                 .addComponent(btAddPhieu)
                                 .addGap(121, 121, 121)
                                 .addComponent(btEditPhieu)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                                 .addComponent(btDelPhieu)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -564,7 +570,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
                                             .addComponent(txtTenKhach))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
@@ -583,7 +589,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(btDelKhach)
                                 .addGap(80, 80, 80))))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -635,7 +641,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 605, Short.MAX_VALUE)
+            .addGap(0, 639, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -717,7 +723,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
         if (this.txtMaSach.getText().length()==0) JOptionPane.showMessageDialog(null, "Mã sách không thể bỏ trống", "thông báo", 2);
         else if(this.txtMaSach.getText().length()>10) JOptionPane.showMessageDialog(null, "Mã sách không được lớn hơn 10 ký tự", "thông báo", 2);
         else {
-            Sach s = new Sach(this.txtMaSach.getText(), this.txtTenSach.getText(), this.txtTenTacGia.getText(),this.txtNhaXb.getText(),
+            Book s = new Book(this.txtMaSach.getText(), this.txtTenSach.getText(), this.txtTenTacGia.getText(),this.txtNhaXb.getText(),
              Integer.parseInt(this.txtGia.getText()),Integer.parseInt(this.txtSoLuong.getText()));
             SachData.InsertSach(s);
             this.btLookSach.doClick();
@@ -743,7 +749,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
         if (this.txtMaSach.getText().length()==0) JOptionPane.showMessageDialog(null, "Mã sách không thể bỏ trống", "thông báo", 2);
         else if(this.txtMaSach.getText().length()>10) JOptionPane.showMessageDialog(null, "Mã sách không được lớn hơn 10 ký tự", "thông báo", 2);
         else {
-            Sach s = new Sach(this.txtMaSach.getText(), this.txtTenSach.getText(), this.txtTenTacGia.getText(),this.txtNhaXb.getText(),
+            Book s = new Book(this.txtMaSach.getText(), this.txtTenSach.getText(), this.txtTenTacGia.getText(),this.txtNhaXb.getText(),
              Integer.parseInt(this.txtGia.getText()),Integer.parseInt(this.txtSoLuong.getText()));
             if(sachdata.UpdateSach(s)) {
                 JOptionPane.showMessageDialog(null, "Bạn đã sửa thành công", "Thông báo", 1);
@@ -810,7 +816,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
              if (this.txtMaKhach.getText().length()==0) JOptionPane.showMessageDialog(null, "Mã khách hàng không thể bỏ trống", "thông báo", 2);
             else if(this.txtMaKhach.getText().length()>10) JOptionPane.showMessageDialog(null, "Mã khách hàng không được lớn hơn 10 ký tự", "thông báo", 2);
             else {
-            KhachHang s = new KhachHang(this.txtMaKhach.getText(), this.txtPassword.getText(), this.txtTenKhach.getText(),Date.valueOf(this.txtNgaySinh.getText()),
+            Member s = new Member(this.txtMaKhach.getText(), this.txtPassword.getText(), this.txtTenKhach.getText(),Date.valueOf(this.txtNgaySinh.getText()),
             this.txtDiaChi.getText(),this.txtPhone.getText());
             KhachHangData.InsertKhachHang(s);
             this.btLookKhach.doClick();
@@ -826,7 +832,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
         if (this.txtMaKhach.getText().length()==0) JOptionPane.showMessageDialog(null, "Mã khách hàng không thể bỏ trống", "thông báo", 2);
         else if(this.txtMaKhach.getText().length()>10) JOptionPane.showMessageDialog(null, "Mã khách hàng không được lớn hơn 10 ký tự", "thông báo", 2);
         else {
-            KhachHang s = new KhachHang(this.txtMaKhach.getText(), this.txtPassword.getText(), this.txtTenKhach.getText(),Date.valueOf(this.txtNgaySinh.getText()),
+            Member s = new Member(this.txtMaKhach.getText(), this.txtPassword.getText(), this.txtTenKhach.getText(),Date.valueOf(this.txtNgaySinh.getText()),
             this.txtDiaChi.getText(),this.txtPhone.getText());
             if(khachhangdata.UpdateKhachHang(s)) {
                 JOptionPane.showMessageDialog(null, "Bạn đã sửa thành công", "Thông báo", 1);
@@ -903,7 +909,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
                  JOptionPane.showMessageDialog(null, "Mã phiếu mượn không thể bỏ trống", "thông báo", 2);
             else if(this.txtMaPhieuMuon.getText().length()>10) JOptionPane.showMessageDialog(null, "Mã phiếu mượn không được lớn hơn 10 ký tự", "thông báo", 2);
             else {
-            PhieuMuon p = new PhieuMuon(this.txtMaPhieuMuon.getText(),this.txtNguoiMuon.getText(),this.txtSachMuon.getText(),
+            BookLending p = new BookLending(this.txtMaPhieuMuon.getText(),this.txtNguoiMuon.getText(),this.txtSachMuon.getText(),
                     Date.valueOf(this.txtNgayMuon.getText()),Date.valueOf(this.txtHanTra.getText()), 0);
             PhieuMuonData.InsertPhieu(p);
             this.btLookMuon.doClick();
@@ -933,7 +939,7 @@ public class JAdminUpdate extends javax.swing.JFrame {
         if (this.txtMaPhieuMuon.getText().length()==0) JOptionPane.showMessageDialog(null, "Mã phiếu mượn không thể bỏ trống", "thông báo", 2);
         else if(this.txtMaPhieuMuon.getText().length()>10) JOptionPane.showMessageDialog(null, "Mã phiếu mượn không được lớn hơn 10 ký tự", "thông báo", 2);
         else {
-            PhieuMuon p = new PhieuMuon(this.txtMaPhieuMuon.getText(), this.txtNguoiMuon.getText(),
+            BookLending p = new BookLending(this.txtMaPhieuMuon.getText(), this.txtNguoiMuon.getText(),
                     this.txtSachMuon.getText(),Date.valueOf(this.txtNgayMuon.getText()),Date.valueOf(this.txtHanTra.getText()), 0);
             if(phieumuondata.UpdatePhieu(p)) {
                 JOptionPane.showMessageDialog(null, "Bạn đã sửa thành công", "Thông báo", 1);
@@ -1001,6 +1007,10 @@ public class JAdminUpdate extends javax.swing.JFrame {
         } catch (Exception ex) {
         }
     }//GEN-LAST:event_btTraActionPerformed
+
+    private void txtSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoLuongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSoLuongActionPerformed
 
     /**
      * @param args the command line arguments
