@@ -67,6 +67,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         txtMatKhau.setEnabled(false);
+        txtMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMatKhauActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -190,6 +195,8 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String taiKhoan = this.txtTaiKhoan.getText();
         String matKhau = this.txtMatKhau.getText();
+        System.out.println(taiKhoan);
+        System.out.println(matKhau);
         if(taiKhoan.isEmpty() || matKhau.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ban chua nhap day du thong tin", "thong bao", 1);
         }
@@ -236,6 +243,10 @@ public class Login extends javax.swing.JFrame {
     private void txtTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTaiKhoanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTaiKhoanActionPerformed
+
+    private void txtMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatKhauActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatKhauActionPerformed
 
     /**
      * @param args the command line arguments

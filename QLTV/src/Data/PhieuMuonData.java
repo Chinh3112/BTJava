@@ -28,7 +28,7 @@ public class PhieuMuonData {
         }
     }
      public static void InsertPhieu(BookLending p) {
-        String sql = "insert into PHIEU_MUON values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into book_lending values(?,?,?,?,?,?,?,?)";
         try {
             ps = Connect.getConnect().prepareStatement(sql);
             ps.setString(1, p.getId());
@@ -46,7 +46,7 @@ public class PhieuMuonData {
     
     public boolean UpdatePhieu(BookLending p) {
         try {
-            ps = Connect.getConnect().prepareStatement("UPDATE PHIEU_MUON SET  Ma_Khach_hang = ?, Ma_Sach = ?,"
+            ps = Connect.getConnect().prepareStatement("UPDATE book_lending SET  id = ?, Ma_Sach = ?,"
                     + "Ngay_muon = ?, Han_tra = ? where Ma_Phieu_muon = ?");
             ps.setString(5, p.getId());
             ps.setString(1, p.getId_khachhang());
@@ -61,7 +61,7 @@ public class PhieuMuonData {
     
     public boolean DeletePhieu(String ms) {
         try {
-            ps = Connect.getConnect().prepareStatement("DELETE FROM PHIEU_MUON WHERE Ma_Phieu_muon = ?");
+            ps = Connect.getConnect().prepareStatement("DELETE FROM book_lending WHERE id = ?");
             ps.setString(1, ms);
             return ps.executeUpdate() >0;
         } catch(Exception e) {

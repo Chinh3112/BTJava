@@ -52,7 +52,7 @@ public class KhachHangData {
     }
     
      public static void InsertKhachHang(Member kh) {
-        String sql = "insert into KHACH_HANG values(?,?,?,?,?,?,?)";
+        String sql = "insert into member values(?,?,?,?,?,?,?)";
         try {
             ps = Connect.getConnect().prepareStatement(sql);
             ps.setString(1, kh.getId());
@@ -71,8 +71,8 @@ public class KhachHangData {
     
     public boolean UpdateKhachHang(Member kh) {
         try {
-            ps = Connect.getConnect().prepareStatement("UPDATE KHACH_HANG SET Password = ?, Ten_Khach_hang = ?,"
-                    + "Ngay_sinh = ?, Dia_chi = ?, Phone = ? where Ma_Khach_hang = ?");
+            ps = Connect.getConnect().prepareStatement("UPDATE member SET password = ?, name = ?,"
+                    + "birth = ?, address = ?, phonenumber = ? where id = ?");
             ps.setString(6, kh.getId());
             ps.setString(1, kh.getPassword());
             ps.setString(2, kh.getName());
@@ -87,7 +87,7 @@ public class KhachHangData {
     
     public boolean DeleteKhachHang(String maKH) {
         try {
-            ps = Connect.getConnect().prepareStatement("DELETE FROM KHACH_HANG WHERE Ma_Khach_hang = ?");
+            ps = Connect.getConnect().prepareStatement("DELETE FROM member WHERE id = ?");
             ps.setString(1, maKH);
             return ps.executeUpdate() >0;
         } catch(Exception e) {

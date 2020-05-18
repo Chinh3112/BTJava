@@ -22,14 +22,13 @@ public class AdminData {
     public Admin dangNhap(String taiKhoan, String pass) {
         Admin ad = null;
         try{
-            ps = Connect.getConnect().prepareStatement("SELECT * FROM admin where account = ? and password=?");
+            ps = Connect.getConnect().prepareStatement("SELECT * FROM admin where account = 'chinhnv' and password = '123456'");
             ps.setString(1, taiKhoan);
             ps.setString(2, pass);
+            System.out.println(taiKhoan);
             rs = ps.executeQuery();
             while(rs.next()) {
                 ad = new Admin();
-               // kh.setMaKH(rs.getString("Ma_Khach_hang"));
-               // kh.setPass(rs.getString("Password"));
                 
             }
         }
