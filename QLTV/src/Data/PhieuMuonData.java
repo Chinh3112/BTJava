@@ -36,7 +36,7 @@ public class PhieuMuonData {
             ps.setString(3, p.getId_sach());
             ps.setDate(4, p.getNgayMuon());
             ps.setDate(5, p.getHanTra());
-            ps.setString(6, "Nguyễn Hoàng Hải");
+            ps.setString(6, "");
             ps.execute();
             JOptionPane.showMessageDialog(null, "Đã thêm phiếu thành công!" , "Thông báo", 1);
         } catch(Exception e) {
@@ -46,8 +46,8 @@ public class PhieuMuonData {
     
     public boolean UpdatePhieu(BookLending p) {
         try {
-            ps = Connect.getConnect().prepareStatement("UPDATE book_lending SET  id = ?, Ma_Sach = ?,"
-                    + "Ngay_muon = ?, Han_tra = ? where Ma_Phieu_muon = ?");
+            ps = Connect.getConnect().prepareStatement("UPDATE book_lending SET memember_id = ?,"
+                    + "creation_date = ?, due_time = ? where id = ?");
             ps.setString(5, p.getId());
             ps.setString(1, p.getId_khachhang());
             ps.setString(2, p.getId_sach());

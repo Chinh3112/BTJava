@@ -38,7 +38,7 @@ public class SachData {
             ps.setString(4, s.getNhaXB());
             ps.setInt(5, s.getGiaTien());
             ps.setInt(6, s.getStatus());
-            ps.setString(7, "Nguyễn Hoàng Hải");
+            ps.setString(7, "");
             ps.execute();
             JOptionPane.showMessageDialog(null, "Đã thêm sách thành công!" , "Thông báo", 1);
         } catch(Exception e) {
@@ -48,14 +48,14 @@ public class SachData {
     
     public boolean UpdateSach(Book s) {
         try {
-            ps = Connect.getConnect().prepareStatement("UPDATE SACH SET  Ten_Sach = ?, Ten_Tac_gia = ?,"
-                    + "Nha_xb = ?, Gia_tien = ?, So_luong = ? where Ma_Sach = ?");
-            ps.setString(6, s.getId());
+            ps = Connect.getConnect().prepareStatement("UPDATE book_item SET  name = ?, author = ?,"
+                    + "publisher = ? where id = ?");
+            ps.setString(4, s.getId());
             ps.setString(1, s.getTenSach());
             ps.setString(2, s.getTenTacGia());
             ps.setString(3, s.getNhaXB());
-            ps.setInt(4, s.getGiaTien());
-            ps.setInt(5, s.getStatus());
+//            ps.setInt(4, s.getGiaTien());
+//            ps.setInt(5, s.getStatus());
             return ps.executeUpdate() >0;
         } catch (Exception e) {
             return false;
@@ -64,7 +64,7 @@ public class SachData {
     
     public boolean DeleteSach(String ms) {
         try {
-            ps = Connect.getConnect().prepareStatement("DELETE FROM SACH WHERE Ma_Sach = ?");
+            ps = Connect.getConnect().prepareStatement("DELETE FROM book_item WHERE id = ?");
             ps.setString(1, ms);
             return ps.executeUpdate() >0;
         } catch(Exception e) {
