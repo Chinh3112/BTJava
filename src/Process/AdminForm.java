@@ -4,19 +4,23 @@
  * and open the template in the editor.
  */
 package Process;
-
+import Object.User;
 /**
  *
  * @author Gaara
  */
 public class AdminForm extends javax.swing.JFrame {
-
+    private User admin;
     /**
      * Creates new form test
      */
-    public AdminForm() {
+    public AdminForm(User user) {
         this.setLocation(400, 200);
         initComponents();
+        if (user != null) {
+            admin = user;
+            System.out.println(admin);
+        }
     }
 
     /**
@@ -126,7 +130,7 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        AdminUpdate au = new AdminUpdate();
+        AdminUpdate au = new AdminUpdate(admin);
         au.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -188,11 +192,11 @@ public class AdminForm extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminForm().setVisible(true);
+                new AdminForm(null).setVisible(true);
             }
         });
     }

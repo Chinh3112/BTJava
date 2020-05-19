@@ -5,10 +5,10 @@
  */
 package Process;
 
-import Control.AdminControl;
+import Control.UserControl;
 import Control.LibrarianControl;
 import Object.EnumAndConstant;
-import Object.Person;
+import Object.User;
 import Object.Librarian;
 import javax.swing.JOptionPane;
 
@@ -17,13 +17,17 @@ import javax.swing.JOptionPane;
  * @author DAT
  */
 public class AdminUpdate extends javax.swing.JFrame {
-
+    private User admin;
     /**
      * Creates new form AdminUpdate
      */
-    public AdminUpdate() {
+    public AdminUpdate(User user) {
         initComponents();
         this.setLocation(400, 200);
+        if (user != null) {
+            admin = user;
+            System.out.println(admin);
+        }
     }
 
         
@@ -70,6 +74,11 @@ public class AdminUpdate extends javax.swing.JFrame {
         btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAddMouseClicked(evt);
+            }
+        });
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
             }
         });
         btnAdd.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -170,33 +179,69 @@ public class AdminUpdate extends javax.swing.JFrame {
         String phone = txtPhone.getText();
         String address = txtAdress.getText();
         
-        Person prs = new Person(name, address, phone);
-        
+//        Person prs = new Person(name, address, phone);
+//        
         System.out.println(account+" "+password+" "+name+" "+role+" "+phone+" "+address);
-        Librarian lib = new Librarian(prs, account, password, role);
-
-
-        if (
-                lib.getAccount().isEmpty() || 
-                lib.getPassword().isEmpty()||
-                lib.getRole().isEmpty()|| 
-                lib.person.getName().isEmpty()||
-                lib.person.getPhoneNumber().isEmpty()
-            ) {
-            JOptionPane.showMessageDialog(null, "Bạn chưa nhập đủ thông tin", "Message", 1);
-        } else {
-            boolean hasAddLibrarian = AdminControl.addLibrarian(lib);
-            if (hasAddLibrarian) {
-                JOptionPane.showMessageDialog(null, "Adding librarian has successful!", "Message", 1);
-            } else {
-                JOptionPane.showMessageDialog(null, "Adding librarian has failed!", "Message", 1);
-            }
-        }
+//        Librarian lib = new Librarian(prs, account, password, role);
+//
+//
+//        if (
+//                lib.getAccount().isEmpty() || 
+//                lib.getPassword().isEmpty()||
+//                lib.getRole().isEmpty()|| 
+//                lib.person.getName().isEmpty()||
+//                lib.person.getPhoneNumber().isEmpty()
+//            ) {
+//            JOptionPane.showMessageDialog(null, "Bạn chưa nhập đủ thông tin", "Message", 1);
+//        } else {
+//            boolean hasAddLibrarian = AdminControl.addLibrarian(lib);
+//            if (hasAddLibrarian) {
+//                JOptionPane.showMessageDialog(null, "Adding librarian has successful!", "Message", 1);
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Adding librarian has failed!", "Message", 1);
+//            }
+//        }
     }//GEN-LAST:event_btnAddMouseClicked
 
     private void btnAddKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAddKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddKeyPressed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        String account = txtAccount.getText();
+        String password = txtPassword.getText();
+        String name = txtName.getText();
+        String role = cbbRole.getSelectedItem().toString();
+        String phone = txtPhone.getText();
+        String address = txtAdress.getText();
+        
+//        Person prs = new Person(name, address, phone);
+        
+        System.out.println(account+" "+password+" "+name+" "+role+" "+phone+" "+address);
+        User user = new User(0, account, password, role, name, address, phone);
+
+
+        if (
+                user.getAccount().isEmpty() || 
+                user.getPassword().isEmpty()||
+                user.getRole().isEmpty()|| 
+                user.getName().isEmpty()||
+                user.getPhoneNumber().isEmpty()
+            ) {
+            JOptionPane.showMessageDialog(null, "Bạn chưa nhập đủ thông tin", "Message", 1);
+        } else {
+            boolean hasAddLibrarian = UserControl.addUser(user);
+            if (hasAddLibrarian) {
+                JOptionPane.showMessageDialog(null, "Adding user has successful!", "Message", 1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Adding user has failed! Account exitst!", "Message", 1);
+            }
+            AdminForm adf = new AdminForm(admin);
+            adf.setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,7 +273,7 @@ public class AdminUpdate extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminUpdate().setVisible(true);
+                new AdminUpdate(null).setVisible(true);
             }
         });
     }

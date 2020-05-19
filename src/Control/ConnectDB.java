@@ -23,7 +23,7 @@ public class ConnectDB {
 
     public static Connection getConnect() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/lms", "root", "root");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/lms", "root", "123456");
             System.out.println("Kết nối thành công!");
         } catch (SQLException ex) {
             Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);

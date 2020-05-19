@@ -31,8 +31,11 @@ public class UserControl {
     public static ResultSet rs;
 
     public static boolean addUser(User mb) {
-        
-        String sql_account = "INSERT INTO users (account, password, role, name,address, phoneNumber) "
+        if (check_account(mb.getAccount()) == false) {
+            System.out.println("ok chinh");
+            return false;
+        }
+        String sql_account = "INSERT INTO user (user, password, role, name,address, phone_number) "
           +"VALUES (?, ?, ?, ?, ?, ?)";
         try {
             ps = ConnectDB.getConnect().prepareStatement(sql_account);
@@ -44,6 +47,7 @@ public class UserControl {
             ps.setString(5, mb.getAddress());
             ps.setString(6, mb.getPhoneNumber());
             ps.execute();
+            
         } catch (HeadlessException | SQLException e) {
             return false;
         }
@@ -60,25 +64,43 @@ public class UserControl {
         }
     }
     
-    public static int login(String account, String password, String role) {
-//        User acc = null;
-
+    public static User login(String account, String password, String role) {
+        User usr = null;
         try {
-            ps = ConnectDB.getConnect().prepareStatement("SELECT * FROM user where account = ? and password = ? and role = ?");
+            ps = ConnectDB.getConnect().prepareStatement("SELECT * FROM user where user = ? and password = ? and role = ?");
             ps.setString(1, account);
             ps.setString(2, password);
             ps.setString(3, role);
             rs = ps.executeQuery();
             while (rs.next()) {
-//                User acc = new User();
-//                acc.setAccount(rs.getString("id"));
-//                acc.setPassword(rs.getString("password"));
-//                acc.setRole(rs.getString("role"));
+                usr = new User();
+                usr.setAccount(rs.getString("id"));
+                usr.setPassword(rs.getString("password"));
+                usr.setRole(rs.getString("role"));
+                usr.setName(rs.getString("name"));
+                usr.setAddress(rs.getString("address"));
+                usr.setPhoneNumber(rs.getString("phone_number"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountControl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return 0;
+        return usr;
+    }
+    
+    public static boolean check_account(String account) {
+        
+        try {
+            ps = ConnectDB.getConnect().prepareStatement("SELECT * FROM user where user = ?");
+            ps.setString(1, account);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
     }
 }

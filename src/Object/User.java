@@ -28,6 +28,16 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public User() {
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", account=" + account + ", password=" + password + ", role=" + role + ", name=" + name + ", address=" + address + ", phoneNumber=" + phoneNumber + '}';
+    }
+    
+    
+    
     public int getId() {
         return id;
     }
