@@ -5,15 +5,9 @@
  */
 package Control;
 
-import static Control.AccountControl.ps;
-import static Control.AccountControl.rs;
-import Object.Account;
-import Object.Admin;
-import Object.Librarian;
 import Object.User;
 import java.awt.HeadlessException;
 import Object.EnumAndConstant.*;
-import Object.Member;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,10 +48,10 @@ public class UserControl {
         return true;
     }
 
-    public static boolean deleteMember(Member mb) {
+    public static boolean deleteMember(User mb) {
         try {
             ps = ConnectDB.getConnect().prepareStatement("DELETE FROM member WHERE id = ?");
-            ps.setString(1, mb.getId());
+//            ps.setString(1, (String) mb.getId());
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             return false;
@@ -82,7 +76,7 @@ public class UserControl {
                 usr.setPhoneNumber(rs.getString("phone_number"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AccountControl.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(AccountControl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return usr;
@@ -98,7 +92,7 @@ public class UserControl {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AccountControl.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(AccountControl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return false;

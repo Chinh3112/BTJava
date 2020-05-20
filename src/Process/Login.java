@@ -5,12 +5,6 @@
  */
 package Process;
 
-import Control.AccountControl;
-import Control.AdminControl;
-import Control.MemberControl;
-import Object.Account;
-import Object.Admin;
-import Object.Member;
 import javax.swing.JOptionPane;
 import Control.ConnectDB;
 import Control.UserControl;

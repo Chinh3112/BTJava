@@ -7,7 +7,7 @@ package Process;
 import Object.User;
 /**
  *
- * @author Gaara
+ * @author chinh
  */
 public class AdminForm extends javax.swing.JFrame {
     private User admin;
@@ -94,7 +94,7 @@ public class AdminForm extends javax.swing.JFrame {
                 .addComponent(jButton3)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(192, Short.MAX_VALUE)
+                .addContainerGap(191, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
